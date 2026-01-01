@@ -5,7 +5,7 @@ import platform
 import locale
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 OS = platform.system()
 
