@@ -1,4 +1,4 @@
-# 🎮 Network Telemetry Dashboard (Lag Buster)
+# Network Telemetry Dashboard (Lag Buster)
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-WebSockets-green) ![Status](https://img.shields.io/badge/Status-Active-success)
 
@@ -7,7 +7,7 @@
 ![Dashboard Screenshot](screenshot.png)
 _(Run the application to see the live data stream)_
 
-## 📖 Overview
+## Overview
 
 In game development and e-sports, network stability is critical. Standard ping tools offer static numbers, but they often miss micro-stutters and jitter that ruin multiplayer experiences.
 
@@ -17,21 +17,21 @@ In game development and e-sports, network stability is critical. Standard ping t
 2.  **Streams** data to a web dashboard via **WebSockets** (Async).
 3.  **Visualizes** stability trends using **Chart.js** to identify lag spikes instantly.
 
-## 🚀 Key Features
+## Key Features
 
-- **⚡ Real-Time Telemetry:** Uses WebSockets to push data instantly (no page refreshing required).
-- **🕹️ Gamer-Centric UI:** Dark mode dashboard designed for low-light studio environments.
-- **📉 Live Visualization:** Rolling line chart that tracks the last 20 seconds of network performance.
-- **🛠 Cross-Platform Engine:** Auto-detects OS (Windows/Linux) to adjust ping commands dynamically.
+- **Real-Time Telemetry:** Uses WebSockets to push data instantly (no page refreshing required).
+- **Gamer-Centric UI:** Dark mode dashboard designed for low-light studio environments.
+- **Live Visualization:** Rolling line chart that tracks the last 20 seconds of network performance.
+- **Cross-Platform Engine:** Auto-detects OS (Windows/Linux) to adjust ping commands dynamically.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Backend:** Python 3, FastAPI (Async Framework), Uvicorn.
 - **Protocol:** WebSockets (Full-duplex communication).
 - **Frontend:** HTML5, CSS3, JavaScript (Vanilla).
 - **Visualization:** Chart.js.
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -56,7 +56,7 @@ uvicorn main:app --reload
 
 Open your browser and navigate to: `http://localhost:8000`
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 ├── main.py           # The FastAPI application & WebSocket logic
@@ -66,14 +66,14 @@ Open your browser and navigate to: `http://localhost:8000`
 └── README.md         # Documentation
 ```
 
-🧠 How It Works (Architecture)
+## 🧠 How It Works (Architecture)
 
 1.  **The Sensor:** `get_ping.py` executes a shell command to ping a target server (Default 1.1.1.1).
 2.  **The API:** `main.py` opens a WebSocket channel at ws/ping.
 3.  **The Stream:** The server runs an asynchronous loop, fetching ping data and serializing it to JSON.
 4.  **The Client:** `index.html` connects to the WebSocket, parses the JSON, and updates the Chart.js array in real-time.
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - Add ability to change Target IP (e.g., Game Server) from the UI.
 - Save long-term logs to a CSV/Database for post-mortem analysis.
