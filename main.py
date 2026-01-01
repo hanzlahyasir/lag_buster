@@ -1,8 +1,10 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi.responses import HTMLResponse
 from get_ping import get_ping_value
 import asyncio
 import logging
 import json
+import time
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -16,7 +18,7 @@ async def websocket_endpoint(websocket: WebSocket):
         while True:
             ping_value = get_ping_value()
             if ping_value is not None:
-                message = json.dumps({"ping": ping_value})
+                message = json.dumps({"ping": ping_value, 'timestamp' : time.time()})
                 await websocket.send_text(message)
                 logging.debug(f"Sent ping value: {ping_value}")
             else:
@@ -26,3 +28,8 @@ async def websocket_endpoint(websocket: WebSocket):
         logging.info("WebSocket disconnected")
     except Exception as e:
         logging.error(f"Error in WebSocket connection: {e}")
+
+@app.get("/")
+async def home():
+    with open("index.html", "r") as f:
+        return HTMLResponse(f.read())
